@@ -19,7 +19,7 @@ curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.10.5/docker-compose.
 
 2.2. Заменяем дефолтный образ на **apache/airflow:2.7.1**\
 2.3. Меняем значение переменной  **AIRFLOW__CORE__EXECUTOR** с CeleryExecutor на **LocalExecutor**\
-2.4. В блоке **&airflow-common-depends-on** удаляем строки, связанные с сервисом **Redis**\
+2.4. В блоке **&airflow-common-depends-on** удаляем строки, связанные с сервисом **Redis**
 
 ### 3. Создадим необхомые папки для Airflow
 Если заранее не создать нужные папки, то поумолчнию они и всё их содержимое будет создано под root'ом, что может вызвать проблемы в работе Airflow.
@@ -37,21 +37,21 @@ docker compose up -d
 
 Проверим успешность запуска командой `docker ps`:
 
-![screenshot](/img/2.png)
+![screenshot](img/2.png)
 
 Видим, что некоторые контейнеры находятся в состоянии `(health: starting)`.
 Это означает, что они в процессе развёртывания и нужно подождать.
 Через некоторое время проверяем снова и видим, что все контейтеры в состоянии `(healthy)`
 
-![screenshot](/img/3.png)
+![screenshot](img/3.png)
 
 После этого можно попасть в Airflow через браузер по адресу: `http://localhost:8080/ `:
 
-![screenshot](/img/4.png)
+![screenshot](img/4.png)
 
 Вводим airflow/airflow и видим множество примеров DAG-ов:
 
-![screenshot](/img/5.png)
+![screenshot](img/5.png)
 
 ## Вопросы к работе:
 1. Для чего нужен docker-compose?
