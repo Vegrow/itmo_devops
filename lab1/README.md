@@ -9,7 +9,7 @@
 curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.10.5/docker-compose.yaml'
 ```
 ### 2. Подготавливаем docker-compose файл к работе.
-1 1. Удаляем лишние сервисы: 
+2.1. Удаляем лишние сервисы: 
 
 - redis;
 - airflow-worker;
@@ -17,9 +17,9 @@ curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.10.5/docker-compose.
 - airflow-cli;
 - flower.
 
-2 2. Заменяем дефолтный образ на apache/airflow:2.7.1
-3 3. Меняем значение переменной AIRFLOW__CORE__EXECUTOR с CeleryExecutor на LocalExecutor
-4 4. В блоке &airflow-common-depends-on удаляем строки, связанные с сервисом Redis
+2.2. Заменяем дефолтный образ на apache/airflow:2.7.1\
+2.3. Меняем значение переменной AIRFLOW__CORE__EXECUTOR с CeleryExecutor на LocalExecutor\
+2.4. В блоке &airflow-common-depends-on удаляем строки, связанные с сервисом Redis\
 
 ### 3. Создадим необхомые папки для Airflow
 Если заранее не создать нужные папки, то поумолчнию они и всё их содержимое будет создано под root'ом, что может вызвать проблемы в работе Airflow.
