@@ -17,8 +17,8 @@ curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.10.5/docker-compose.
 - airflow-cli;
 - flower.
 
-2.2. Заменяем дефолтный образ на **apache/airflow:2.7.1**\
-2.3. Меняем значение переменной  **AIRFLOW__CORE__EXECUTOR** с CeleryExecutor на **LocalExecutor**\
+2.2. Заменяем дефолтный образ на **apache/airflow:2.7.1**<br>
+2.3. Меняем значение переменной  **AIRFLOW__CORE__EXECUTOR** с CeleryExecutor на **LocalExecutor**<br>
 2.4. В блоке **&airflow-common-depends-on** удаляем строки, связанные с сервисом **Redis**
 
 ### 3. Создадим необхомые папки для Airflow
@@ -54,9 +54,9 @@ docker compose up -d
 ![screenshot](img/5.png)
 
 ## Вопросы к работе:
-1. Для чего нужен docker-compose?
+1. Для чего нужен docker-compose?<br>
 Ответ: для удобного развёртывания системы, состоящий из нескольких компонентов, например веб сервер и база данных к нему.
-2. Как в docker-compose сделать ограничения для контейнера поресурсам (CPU, RAM)?
+2. Как в docker-compose сделать ограничения для контейнера поресурсам (CPU, RAM)?<br>
 Ответ: это можно сделать с помощбью добавления следующего блока в секцию сервиса:
 ```
 deploy:
