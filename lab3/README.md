@@ -56,43 +56,43 @@ cat data/nextcloud.log
 Переходим в **Data collection -> Hosts**, жмём **Create host**. Указываем имя контейнера nextcloud, видимое имя - любое, хост группа - Applications.
 В поле Templates выбираем добавленный ранее шаблон **Templates/Applications -> Test ping template**
 
-![screenshot](img/Screenshot_347.png
+![screenshot](img/Screenshot_347.png)
 
-![screenshot](img/Screenshot_348.png
+![screenshot](img/Screenshot_348.png)
 
 Настройка хоста закончена. Переходим в раздел **Monitoring -> Latest data**. Через какое-то время там должны появиться первые данные, в
 нашем случае значение healthy.
 
-![screenshot](img/Screenshot_349.png
+![screenshot](img/Screenshot_349.png)
 
 На этом мониторинг можно считать успешно настроенным. Для проверки включим в некстклауде **maintenance mode** командой `php occ maintenance:mode--on` в контейнере,
 проверяем, что сработал триггер (в разделе **Monitoring → Problems**). Потом выключаем режим обратно `php occ maintenance:mode --off` и убеждаемся, что
 проблема помечена как "решенная".
 
-![screenshot](img/Screenshot_351.png
+![screenshot](img/Screenshot_351.png)
 
-![screenshot](img/Screenshot_352.png
+![screenshot](img/Screenshot_352.png)
 
-![screenshot](img/Screenshot_354.png
+![screenshot](img/Screenshot_354.png)
 
 ### 2. Визуализация
 В терминале выполняем команду `docker exec -it grafana bash -c "grafana cli plugins install alexanderzobnin-zabbix-app"` , затем `docker restart grafana`
 
-![screenshot](img/Screenshot_356.png
+![screenshot](img/Screenshot_356.png)
 
 Заходим в графану localhost:3000, раздел **Administration -> Plugins**. Найти там **Zabbix** и активируем, нажав **Enable**.
 
-![screenshot](img/Screenshot_357.png
+![screenshot](img/Screenshot_357.png)
 
 Далее подключаем Loki к Grafana, раздел **Connections -> Data sources -> Loki**. В настройках подключения указываем имя loki и адрес http://loki:3100 , все
 остальное можно оставить по дефолту:
 
-![screenshot](img/Screenshot_358.png
+![screenshot](img/Screenshot_358.png)
 
 Сохраняем подключение, нажав **Save & Test**. Если нет ошибок и сервис предлагает перейти к визуализации и/или просмотру данных, значит всё
 настроено правильно
 
-![screenshot](img/Screenshot_359.png
+![screenshot](img/Screenshot_359.png)
 
 ## Ответы на вопросы
 Вопрос: В чем разница между мониторингом и observability?
