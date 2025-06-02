@@ -75,7 +75,7 @@ cat data/nextcloud.log
 
 ![screenshot](img/Screenshot_354.png)
 
-### 2. Визуализация
+### 3. Визуализация
 В терминале выполняем команду `docker exec -it grafana bash -c "grafana cli plugins install alexanderzobnin-zabbix-app"` , затем `docker restart grafana`
 
 ![screenshot](img/Screenshot_356.png)
@@ -100,7 +100,7 @@ cat data/nextcloud.log
 
 ![screenshot](img/Screenshot_362.png)
 
-### 2. Задание: создать дашборд
+### 4. Задание: создать дашборд
 Пример дашборда с данными из логов nexcloud и loki в качестве источника данных. Были применены трансформации Extract fileds и Organize fields.
 
 ![screenshot](img/Screenshot_363.png)
