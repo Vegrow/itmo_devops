@@ -7,8 +7,7 @@
 ### 1. Логирование
 Создаём файл [docker-compose.yml](docker-compose.yml), который содержит в себе тестовые сервисы Nextcloud, Loki, Promtail, Grafana, Zabbix и Postgres для него.
 </br>Так же создаём конфигурационный файл [promtail_config.yml](promtail_config.yml) для Promtail.
-Стартуем docker-compose.yml командой `docker-compose up -d`, 
-в результате должны увидеть, что все контейнеры с сервисами успешно создались и запустились (проверить можно командой 	`docker ps`):
+</br>Стартуем docker-compose.yml командой `docker-compose up -d`, в результате должны увидеть, что все контейнеры с сервисами успешно создались и запустились (проверить можно командой 	`docker ps`):
 
 ![screenshot](img/Screenshot_336.png)
 
@@ -100,10 +99,30 @@ cat data/nextcloud.log
 
 ![screenshot](img/Screenshot_362.png)
 
+Аналогично создаём подключение для Zabbix. У меня всё пошло по одному месту, и Zabbix в списке источников не отображался. Был найден выход, подключение можно добавить через yaml-файл.
+</br>Берём [datasources.yaml](datasources.yaml) и копируем его в контейнер с графаной в директорию **/etc/grafana/provisioning/datasources/**:
+```bash
+docker cp datasources.yaml grafana:/etc/grafana/provisioning/datasources/
+```
+Не забываем рестартануть контейнер. Вуаля, подюключение добавлено.
+
+![screenshot](img/Screenshot_364.png)
+
+![screenshot](img/Screenshot_365.png)
+
+![screenshot](img/Screenshot_366.png)
+
 ### 4. Задание: создать дашборд
 Пример дашборда с данными из логов nexcloud и loki в качестве источника данных. Были применены трансформации Extract fileds и Organize fields.
 
 ![screenshot](img/Screenshot_363.png)
+
+Пример дашборда с данными от zabbix
+
+![screenshot](img/Screenshot_369.png)
+
+![screenshot](img/Screenshot_368.png)
+
 
 ## Ответы на вопросы
 Вопрос: В чем разница между мониторингом и observability?
